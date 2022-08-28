@@ -58,7 +58,7 @@ class DataObjectHandler extends AbstractProcessingHandler
 
     protected function write(array $record)
     {
-        $this->addDataObject((string) $record['level'], $record['message'], $record['level_name']);
+        $this->addDataObject((string) $record['level'] . ': '.$record['message'], $record['level_name']);
     }
 
     /**
