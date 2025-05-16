@@ -51,7 +51,7 @@ class DataObjectHandler extends AbstractProcessingHandler
         parent::__construct($level, $bubble);
     }
 
-    protected function getDefaultFormatter()
+    protected function getDefaultFormatter(): \Monolog\Formatter\FormatterInterface
     {
         return new JsonFormatter;
     }
@@ -119,4 +119,3 @@ class DataObjectHandler extends AbstractProcessingHandler
         return (int) Config::inst()->get(LogEntry::class, 'minimum_log_level');
     }
 }
-    
