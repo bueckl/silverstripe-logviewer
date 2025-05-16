@@ -51,14 +51,20 @@ class DataObjectHandler extends AbstractProcessingHandler
         parent::__construct($level, $bubble);
     }
 
-    protected function getDefaultFormatter()
+    protected function getDefaultFormatter(): \Monolog\Formatter\FormatterInterface
     {
         return new JsonFormatter;
     }
 
-    protected function write(array $record)
+    /**
+     * Write a log record to the database (Monolog 3 signature)
+     *
+     * @param \Monolog\LogRecord $record
+     */
+    protected function write(\Monolog\LogRecord $record): void
     {
-        $this->addDataObject((string) $record['formatted'], $record['level_name']);
+        $recordArray = $record->toArray();
+        $this->addDataObject((string) $recordArray['level'] . ': '.$recordArray['message'], $recordArray['level_name']);
     }
 
     /**
