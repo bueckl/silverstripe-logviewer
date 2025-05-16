@@ -119,3 +119,4 @@ class DataObjectHandler extends AbstractProcessingHandler
         return (int) Config::inst()->get(LogEntry::class, 'minimum_log_level');
     }
 }
+    
